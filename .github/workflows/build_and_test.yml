@@ -33,7 +33,7 @@ jobs:
         echo "GIT_COMMIT_MESSAGE=${GIT_COMMIT_MESSAGE}"  >> ${GITHUB_ENV}
         echo "PROJECT_URL=${PROJECT_URL}"                >> ${GITHUB_ENV}
         echo "REPO_URL=${REPO_URL}"                      >> ${GITHUB_ENV}
-        echo "PACKAGE=`echo "$GIT_COMMIT_MESSAGE" | sed -E 's|^([^ -]+).*|\1|1'" >> ${GITHUB_ENV}
+        echo "PACKAGE=`echo "$GIT_COMMIT_MESSAGE" | sed -E 's|^([^ -]+).*|\1|1'`" >> ${GITHUB_ENV}
     - name: cd to target
       run: cd $PACKAGE
     - name: Build
