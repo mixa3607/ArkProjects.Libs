@@ -3,4 +3,4 @@
 ![nuget pre](https://img.shields.io/nuget/vpre/ArkProjects.EHentai.Api?style=flat-square)
 ![license](https://img.shields.io/github/license/mixa3607/ArkProjects.Libs?style=flat-square)
 
-## WIP
+e-hentai.org/exhentai.org api client
