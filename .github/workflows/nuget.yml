@@ -34,13 +34,14 @@ jobs:
         echo "PROJECT_URL=${PROJECT_URL}"       >> ${GITHUB_ENV}
         echo "REPO_URL=${REPO_URL}"             >> ${GITHUB_ENV}
         echo "PACKAGE=`echo "$GIT_REF" | sed -E 's|^([^ -]+).*|\1|1'`" >> ${GITHUB_ENV}
-    - name: cd to target
-      run: cd $PACKAGE
     - name: Build
+      working-directory: ${{env.PACKAGE}}
       run: dotnet build -c Release --no-restore
     - name: Test
+      working-directory: ${{env.PACKAGE}}
       run: dotnet test -c Release --no-build --logger trx --results-directory "TestResults"
     - name: Upload dotnet test results
+      working-directory: ${{env.PACKAGE}}
       uses: actions/upload-artifact@v2
       with:
         name: dotnet-results
@@ -69,25 +70,24 @@ jobs:
           PROJECT_URL: ${{ github.server_url }}/${{ github.repository }}
           REPO_URL: ${{ github.repositoryUrl }}
         run: |
-          echo "GIT_REF=${GIT_REF}"                                     >> ${GITHUB_ENV}
-          echo "GIT_REF_TYPE=${GIT_REF_TYPE}"                           >> ${GITHUB_ENV}
-          echo "GIT_COMMIT_SHA=${GIT_COMMIT_SHA}"                       >> ${GITHUB_ENV}
-          echo "PROJECT_URL=${PROJECT_URL}"                             >> ${GITHUB_ENV}
-          echo "REPO_URL=${REPO_URL}"                                   >> ${GITHUB_ENV}
+          echo "GIT_REF=${GIT_REF}"               >> ${GITHUB_ENV}
+          echo "GIT_REF_TYPE=${GIT_REF_TYPE}"     >> ${GITHUB_ENV}
+          echo "GIT_COMMIT_SHA=${GIT_COMMIT_SHA}" >> ${GITHUB_ENV}
+          echo "PROJECT_URL=${PROJECT_URL}"       >> ${GITHUB_ENV}
+          echo "REPO_URL=${REPO_URL}"             >> ${GITHUB_ENV}
           echo "PACKAGE=`echo "$GIT_REF" | sed 's|\([^-]+\)-v.*|\1|1'`" >> ${GITHUB_ENV}
-    - name: cd to target
-      run: cd $PACKAGE
     - name: Pack
-      run: |
-        dotnet pack -c Release -o ./out /p:NugetBuild=true /p:ContinuousIntegrationBuild=true $PACKAGE
+      working-directory: ${{env.PACKAGE}}
+      run: dotnet pack -c Release -o ./out /p:NugetBuild=true /p:ContinuousIntegrationBuild=true $PACKAGE
     - name: Dist
+      working-directory: ${{env.PACKAGE}}
       uses: actions/upload-artifact@v2
       with:
         name: nuget_packages
         path: ./out
       if: ${{always()}}
     - name: NugetPush
+      working-directory: ${{env.PACKAGE}}
       env: 
         NUGET_KEY: ${{secrets.NUGET_KEY}}
-      run: |
-        dotnet nuget push ./out/$PACKAGE.nupkg --source nuget.org -k $NUGET_KEY
+      run: dotnet nuget push ./out/$PACKAGE.nupkg --source nuget.org -k $NUGET_KEY

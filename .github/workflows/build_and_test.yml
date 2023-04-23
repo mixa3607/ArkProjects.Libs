@@ -34,13 +34,14 @@ jobs:
         echo "PROJECT_URL=${PROJECT_URL}"                >> ${GITHUB_ENV}
         echo "REPO_URL=${REPO_URL}"                      >> ${GITHUB_ENV}
         echo "PACKAGE=`echo "$GIT_COMMIT_MESSAGE" | sed -E 's|^([^ -]+).*|\1|1'`" >> ${GITHUB_ENV}
-    - name: cd to target
-      run: cd $PACKAGE
     - name: Build
+      working-directory: ${{env.PACKAGE}}
       run: dotnet build -c Release --no-restore
     - name: Test
+      working-directory: ${{env.PACKAGE}}
       run: dotnet test -c Release --no-build --logger trx --results-directory "TestResults"
     - name: Upload dotnet test results
+      working-directory: ${{env.PACKAGE}}
       uses: actions/upload-artifact@v2
       with:
         name: dotnet-results
