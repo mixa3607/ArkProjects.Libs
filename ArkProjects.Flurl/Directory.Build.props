@@ -3,8 +3,7 @@
 		<!--For manual nuget build you must export GIT_REF_TYPE=tag and GIT_REF=v<version> to env-->
 
 		<!--extract version from tag-->
-		<VERSION Condition="'$(VERSION)' == '' and '$(GIT_REF_TYPE)' == 'tag'">$([System.Text.RegularExpressions.Regex]::Match($(GIT_REF), '[^-]+-v(?&lt;ver&gt;(\d+\.)*\d+)').Groups['ver'].Value)</VERSION>
-		<FULL_VERSION Condition="'$(FULL_VERSION)' == '' and '$(GIT_REF_TYPE)' == 'tag'">$([System.Text.RegularExpressions.Regex]::Match($(GIT_REF), '[^-]+v(?&lt;ver&gt;(\d+\.)*\d+.*)').Groups['ver'].Value)</FULL_VERSION>
+		<VERSION Condition="'$(VERSION)' == '' and '$(GIT_REF_TYPE)' == 'tag'">$([System.Text.RegularExpressions.Regex]::Match($(GIT_REF), '^[^-]+-v(?&lt;ver&gt;(\d+\.)*\d+)').Groups['ver'].Value)</VERSION>
 		<VERSION Condition="'$(VERSION)' == ''">0.0.0</VERSION>
 		<FULL_VERSION Condition="'$(FULL_VERSION)' == ''">$(VERSION)</FULL_VERSION>
 

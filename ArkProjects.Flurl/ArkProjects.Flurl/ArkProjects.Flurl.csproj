@@ -15,7 +15,7 @@
 	<ItemGroup Condition="'$(NugetBuild)' == 'true'">
 		<None Include="../README.md" Pack="true" Visible="false" PackagePath="docs/" />
 		<None Include="../LICENSE.txt" Pack="true" Visible="false" PackagePath="docs/" />
-		<None Include="./package-icon.png" Pack="true" Visible="false" PackagePath="images/" />
+		<None Include="../package-icon.png" Pack="true" Visible="false" PackagePath="images/" />
 	</ItemGroup>
 	<PropertyGroup Condition="'$(NugetBuild)' == 'true'">
 		<IsPackable>true</IsPackable>
@@ -38,11 +38,6 @@
 	</PropertyGroup>
 	<ItemGroup Condition="'$(NugetBuild)' == 'true' And '$(ContinuousIntegrationBuild)' == 'true'">
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-
-		<PackageReference Include="MinVer" Version="4.3.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
