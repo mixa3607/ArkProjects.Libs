@@ -21,19 +21,19 @@ jobs:
         path: ~/.nuget/packages
         key: ${{runner.os}}-nuget
     - name: env vars
-        env:
-          GIT_REF: ${{ github.ref_name }}
-          GIT_REF_TYPE: ${{ github.ref_type }}
-          GIT_COMMIT_SHA: ${{ github.sha }}
-          PROJECT_URL: ${{ github.server_url }}/${{ github.repository }}
-          REPO_URL: ${{ github.repositoryUrl }}
-        run: |
-          echo "GIT_REF=${GIT_REF}"                                     >> ${GITHUB_ENV}
-          echo "GIT_REF_TYPE=${GIT_REF_TYPE}"                           >> ${GITHUB_ENV}
-          echo "GIT_COMMIT_SHA=${GIT_COMMIT_SHA}"                       >> ${GITHUB_ENV}
-          echo "PROJECT_URL=${PROJECT_URL}"                             >> ${GITHUB_ENV}
-          echo "REPO_URL=${REPO_URL}"                                   >> ${GITHUB_ENV}
-          echo "PACKAGE=`echo "$GIT_REF" | sed 's|\([^-]+\)-v.*|\1|1'`" >> ${GITHUB_ENV}
+      env:
+        GIT_REF: ${{ github.ref_name }}
+        GIT_REF_TYPE: ${{ github.ref_type }}
+        GIT_COMMIT_SHA: ${{ github.sha }}
+        PROJECT_URL: ${{ github.server_url }}/${{ github.repository }}
+        REPO_URL: ${{ github.repositoryUrl }}
+      run: |
+        echo "GIT_REF=${GIT_REF}"                                     >> ${GITHUB_ENV}
+        echo "GIT_REF_TYPE=${GIT_REF_TYPE}"                           >> ${GITHUB_ENV}
+        echo "GIT_COMMIT_SHA=${GIT_COMMIT_SHA}"                       >> ${GITHUB_ENV}
+        echo "PROJECT_URL=${PROJECT_URL}"                             >> ${GITHUB_ENV}
+        echo "REPO_URL=${REPO_URL}"                                   >> ${GITHUB_ENV}
+        echo "PACKAGE=`echo "$GIT_REF" | sed 's|\([^-]+\)-v.*|\1|1'`" >> ${GITHUB_ENV}
     - name: cd to target
       run: cd $PACKAGE
     - name: Build
