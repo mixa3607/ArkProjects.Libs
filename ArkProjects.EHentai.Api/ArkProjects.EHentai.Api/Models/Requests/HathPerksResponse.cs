@@ -18,7 +18,7 @@ public class HathPerksResponse
             .SelectNodes("//*/p")
             .First(x => x.InnerText.Contains("You currently have "))
             .InnerText;
-        response.Hath = double.Parse(Regex.Match(hathRaw, "\\d+\\.\\d+").Value, culture);
+        response.Hath = double.Parse(Regex.Match(hathRaw, "\\d+(\\.\\d+)*").Value, culture);
 
         return response;
     }

@@ -1,0 +1,10 @@
+{
+  "TestCases": [
+    {
+      "ExpectedResult": {
+        "Hath": 25.98
+      },
+      "HtmlPath": "./files/ParsingTests/HathPerks_1.html"
+    }
+  ]
+}
