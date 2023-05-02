@@ -73,15 +73,6 @@ public class HathStatusResponse
             var createdRaw = cells[3].InnerText;
             var lastSeenRaw = cells[4].InnerText;
             var filesServedRaw = cells[5].InnerText;
-            var ipRaw = cells[6].InnerText;
-            var portRaw = cells[7].InnerText;
-            var versionRaw = cells[8].InnerText;
-            var maxSpeedRaw = cells[9].InnerText;
-            var trustRaw = cells[10].InnerText;
-            var qualityRaw = cells[11].InnerText;
-            var hitrateRaw = cells[12].InnerText;
-            var hathrateRaw = cells[13].InnerText;
-            var countryRaw = cells[14].InnerText;
 
             var name = nameRaw.Trim();
             var id = int.Parse(Regex.Match(idRaw, "\\d+").Value, culture);
@@ -89,39 +80,46 @@ public class HathStatusResponse
             {
                 "Online" => HathClientStatus.Online,
                 "Timeout" => HathClientStatus.Timeout,
+                "Offline" => HathClientStatus.Offline,
                 _ => HathClientStatus.Unknown
             };
             var created = DateOnly.Parse(createdRaw);
-            var lastSeen = DateTime.MinValue;
+            //var lastSeen = DateTime.MinValue;
             var filesServed = long.Parse(filesServedRaw.Replace(",", ""), culture);
-            var ip = ipRaw.Trim();
-            var port = int.Parse(Regex.Match(portRaw, "\\d+").Value, culture);
-            var version = versionRaw.Trim();
-            var maxSpeed = long.Parse(Regex.Match(maxSpeedRaw, "\\d+").Value, culture);
-            var trust = int.Parse(Regex.Match(trustRaw, "\\d+").Value, culture);
-            var quality = int.Parse(qualityRaw.Trim(), culture);
-            var hitrate = double.Parse(Regex.Match(hitrateRaw, "\\d+\\.\\d+").Value, culture);
-            var hathrate = double.Parse(Regex.Match(hathrateRaw, "\\d+\\.\\d+").Value, culture);
-            var country = countryRaw.Trim();
-
             var clientInfo = new HathClientInfo()
             {
                 Name = name,
                 Id = id,
                 Status = status,
                 Created = created,
-                LastSeen = lastSeen,
+                //LastSeen = lastSeen,
                 FilesServed = filesServed,
-                ClientIp = ip,
-                Port = port,
-                Version = version,
-                MaxSpeed = maxSpeed,
-                Trust = trust,
-                Quality = quality,
-                Hitrate = hitrate,
-                Hathrate = hathrate,
-                Country = country,
             };
+
+            if (status is not HathClientStatus.Offline and not HathClientStatus.Unknown)
+            {
+                var ipRaw = cells[6].InnerText;
+                var portRaw = cells[7].InnerText;
+                var versionRaw = cells[8].InnerText;
+                var maxSpeedRaw = cells[9].InnerText;
+                var trustRaw = cells[10].InnerText;
+                var qualityRaw = cells[11].InnerText;
+                var hitrateRaw = cells[12].InnerText;
+                var hathrateRaw = cells[13].InnerText;
+                var countryRaw = cells[14].InnerText;
+
+                clientInfo.ClientIp = ipRaw.Trim();
+                clientInfo.Port = int.Parse(Regex.Match(portRaw, "\\d+").Value, culture);
+                clientInfo.Version = versionRaw.Trim();
+                clientInfo.MaxSpeed = long.Parse(Regex.Match(maxSpeedRaw, "\\d+").Value, culture);
+                clientInfo.Trust = int.Parse(Regex.Match(trustRaw, "\\d+").Value, culture);
+                clientInfo.Quality = int.Parse(qualityRaw.Trim(), culture);
+                clientInfo.Hitrate = double.Parse(Regex.Match(hitrateRaw, "\\d+\\.\\d+").Value, culture);
+                clientInfo.Hathrate = double.Parse(Regex.Match(hathrateRaw, "\\d+\\.\\d+").Value, culture);
+                clientInfo.Country = countryRaw.Trim();
+            }
+
+
             clients.Add(clientInfo);
         }
 

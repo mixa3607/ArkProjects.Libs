@@ -1,0 +1,61 @@
+{
+  "TestCases": [
+    {
+      "ExpectedResult": {
+        "Regions": [
+          {
+            "Region": 1,
+            "NetLoad": 187,
+            "MissRate": 0.02,
+            "Coverage": 16.51,
+            "HitsPerGb": 0.0771,
+            "Quality": 7723
+          },
+          {
+            "Region": 2,
+            "NetLoad": 174,
+            "MissRate": 0.03,
+            "Coverage": 18.7,
+            "HitsPerGb": 0.0643,
+            "Quality": 8137
+          },
+          {
+            "Region": 3,
+            "NetLoad": 2908,
+            "MissRate": 0.01,
+            "Coverage": 26.32,
+            "HitsPerGb": 0.509,
+            "Quality": 9041
+          },
+          {
+            "Region": 4,
+            "NetLoad": 3269,
+            "MissRate": 0.01,
+            "Coverage": 61.54,
+            "HitsPerGb": 0.2724,
+            "Quality": 8430
+          }
+        ],
+        "Clients": [
+          {
+            "Name": "services.lan",
+            "Id": 45044,
+            "Status": 150,
+            "Created": "2023-04-10",
+            "FilesServed": 40239,
+            "ClientIp": null,
+            "Port": 0,
+            "Version": null,
+            "MaxSpeed": 0,
+            "Trust": 0,
+            "Quality": 0,
+            "Hitrate": 0.0,
+            "Hathrate": 0.0,
+            "Country": null
+          }
+        ]
+      },
+      "HtmlPath": "./files/ParsingTests/HathStatus_1.html"
+    }
+  ]
+}

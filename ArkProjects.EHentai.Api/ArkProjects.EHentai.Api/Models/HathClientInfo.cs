@@ -6,7 +6,7 @@ public class HathClientInfo
     public int Id { get; set; }
     public HathClientStatus Status { get; set; }
     public DateOnly Created { get; set; }
-    public DateTime LastSeen { get; set; }
+    //public DateTime LastSeen { get; set; }
     public long FilesServed { get; set; }
     public string? ClientIp { get; set; }
     public int Port { get; set; }

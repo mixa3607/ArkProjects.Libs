@@ -1,0 +1,61 @@
+{
+  "TestCases": [
+    {
+      "ExpectedResult": {
+        "Regions": [
+          {
+            "Region": 1,
+            "NetLoad": 183,
+            "MissRate": 0.09,
+            "Coverage": 16.51,
+            "HitsPerGb": 0.0773,
+            "Quality": 7726
+          },
+          {
+            "Region": 2,
+            "NetLoad": 157,
+            "MissRate": 0.1,
+            "Coverage": 18.76,
+            "HitsPerGb": 0.0645,
+            "Quality": 8190
+          },
+          {
+            "Region": 3,
+            "NetLoad": 2299,
+            "MissRate": 0.04,
+            "Coverage": 26.3,
+            "HitsPerGb": 0.5101,
+            "Quality": 9047
+          },
+          {
+            "Region": 4,
+            "NetLoad": 2639,
+            "MissRate": 0.05,
+            "Coverage": 61.57,
+            "HitsPerGb": 0.2742,
+            "Quality": 8450
+          }
+        ],
+        "Clients": [
+          {
+            "Name": "services.lan",
+            "Id": 45044,
+            "Status": 200,
+            "Created": "2023-04-10",
+            "FilesServed": 40239,
+            "ClientIp": "46.10.20.30",
+            "Port": 1443,
+            "Version": "1.6.1 Stable",
+            "MaxSpeed": 40000,
+            "Trust": 1000,
+            "Quality": 5046,
+            "Hitrate": 1.4,
+            "Hathrate": 2.7,
+            "Country": "Russian Federation"
+          }
+        ]
+      },
+      "HtmlPath": "./files/ParsingTests/HathStatus_2.html"
+    }
+  ]
+}

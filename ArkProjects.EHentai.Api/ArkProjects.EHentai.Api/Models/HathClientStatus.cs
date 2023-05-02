@@ -3,6 +3,7 @@
 public enum HathClientStatus : byte
 {
     Unknown = 0,
-    Online = 10,
-    Timeout = 20,
+    Timeout = 100,
+    Offline = 150,
+    Online = 200,
 }
