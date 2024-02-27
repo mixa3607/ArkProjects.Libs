@@ -2,14 +2,14 @@
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<Description>Flurl extensions</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Flurl" Version="3.0.7" />
-		<PackageReference Include="Flurl.Http" Version="3.2.4" />
+		<PackageReference Include="Flurl" Version="4.0.0" />
+		<PackageReference Include="Flurl.Http" Version="4.0.2" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(NugetBuild)' == 'true'">
