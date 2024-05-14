@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Description>EHentai api client</Description>
@@ -40,11 +40,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ArkProjects.Flurl" Version="1.0.0" />
-		<PackageReference Include="Flurl" Version="3.0.7" />
-		<PackageReference Include="Flurl.Http" Version="3.2.4" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+		<PackageReference Include="ArkProjects.Flurl" Version="4.0.0" />
+		<PackageReference Include="Flurl" Version="4.0.0" />
+		<PackageReference Include="Flurl.Http" Version="4.0.2" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
 	</ItemGroup>
 
 </Project>

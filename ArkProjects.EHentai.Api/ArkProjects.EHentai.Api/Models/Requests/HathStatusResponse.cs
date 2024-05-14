@@ -39,20 +39,22 @@ public class HathStatusResponse
                 "North and South America" => HathRegionType.NorthSouthAmerica,
                 "Europe and Africa" => HathRegionType.EuropeAfrica,
                 "Asia and Oceania" => HathRegionType.AsiaOceania,
+                "Chinese Dominion" => HathRegionType.ChineseDominion,
                 "Global" => HathRegionType.Global,
                 _ => HathRegionType.Unknown
             };
             var netLoad = int.Parse(Regex.Match(netLoadRaw, "\\d+").Value, culture);
-            var miss = double.Parse(Regex.Match(missRaw, "\\d+\\.\\d+").Value, culture);
+            var hits = int.Parse(Regex.Match(missRaw, "\\d+").Value, culture);
             var coverage = double.Parse(Regex.Match(coverageRaw, "\\d+\\.\\d+").Value, culture);
             var hitrate = double.Parse(Regex.Match(hitrateRaw, "\\d+\\.\\d+").Value, culture);
-            var quality = int.Parse(Regex.Match(qualityRaw, "\\d+").Value, culture);
+            if (!int.TryParse(Regex.Match(qualityRaw, "\\d+").Value, culture, out var quality))
+                quality = -1;
 
             var regionInfo = new HathRegionInfo()
             {
                 Region = region,
                 NetLoad = netLoad,
-                MissRate = miss,
+                HitsPerSecond = hits,
                 Coverage = coverage,
                 HitsPerGb = hitrate,
                 Quality = quality

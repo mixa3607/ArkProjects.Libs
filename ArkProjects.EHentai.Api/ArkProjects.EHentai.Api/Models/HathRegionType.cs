@@ -6,5 +6,6 @@ public enum HathRegionType
     NorthSouthAmerica,
     EuropeAfrica,
     AsiaOceania,
+    ChineseDominion,
     Global
 }
