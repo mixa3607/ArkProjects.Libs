@@ -1,0 +1,19 @@
+{
+  "TestCases": [
+    {
+      "ExpectedResult": {
+        "ClientId": 45244,
+        "ClientKey": "PFxb12auaaaaaaaaaaaa",
+        "StaticRanges": 289,
+        "StaticRangeGroups": {
+          "Priority1": 55,
+          "Priority2": 148,
+          "Priority3": 9,
+          "Priority4": 9,
+          "HighCapacity": 29
+        }
+      },
+      "HtmlPath": "./files/ParsingTests/HathSettings_1.html"
+    }
+  ]
+}
