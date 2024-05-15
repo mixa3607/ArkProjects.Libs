@@ -4,25 +4,10 @@ using HtmlAgilityPack;
 
 namespace ArkProjects.EHentai.Api.Models.Requests;
 
-public enum StaticRangeGroupType
-{
-    Unknown,
-    Priority1,
-    Priority2,
-    Priority3,
-    Priority4,
-    HighCapacity
-}
-
-public class StaticRangeGroup
-{
-    public StaticRangeGroupType Type { get; set; } = StaticRangeGroupType.Unknown;
-    public int Count { get; set; } = -1;
-}
-
 public class HathSettingsResponse
 {
     public long ClientId { get; set; } = -1;
+    public string? ClientName { get; set; }
     public string? ClientKey { get; set; }
 
     public int StaticRanges { get; set; } = -1;
@@ -47,11 +32,18 @@ public class HathSettingsResponse
         }
 
         {
-            var table = tables.First(x => x.SelectSingleNode(".//tr/td/div[text()='Reset Static Ranges']") != null);
+
+            var table = doc.DocumentNode.SelectSingleNode("//*/table[@class='infot']");
             var rows = table.SelectNodes(".//tr");
             foreach (var row in rows)
             {
-                if (row.InnerText.Contains("Reset Static Ranges"))
+                if (row.SelectNodes(".//td[@class='infota']").FirstOrDefault()?.InnerText.Contains("Client Name") == true)
+                {
+                    var text = row.SelectNodes(".//td[@class='infotv']/p/span").First().InnerText;
+                    response.ClientName = text?.Trim();
+                }
+
+                if (row.SelectNodes(".//td[@class='infota']").FirstOrDefault()?.InnerText.Contains("Reset Static Ranges") == true)
                 {
                     var text = row.SelectNodes(".//td[@class='infotv']/p[1]").First().InnerText;
                     {
@@ -78,7 +70,6 @@ public class HathSettingsResponse
                             match = match.NextMatch();
                         }
                     }
-
                 }
             }
         }

@@ -3,6 +3,7 @@
     {
       "ExpectedResult": {
         "ClientId": 45244,
+        "ClientName": "services.lan",
         "ClientKey": "PFxb12auaaaaaaaaaaaa",
         "StaticRanges": 289,
         "StaticRangeGroups": {
