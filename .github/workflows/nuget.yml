@@ -79,7 +79,7 @@ jobs:
       working-directory: ${{env.PACKAGE}}
       run: dotnet pack -c Release -o ./out /p:NugetBuild=true /p:ContinuousIntegrationBuild=true $PACKAGE
     - name: Dist
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: nuget_packages
         path: ${{env.PACKAGE}}/out
