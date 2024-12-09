@@ -4,12 +4,12 @@ namespace ArkProjects.EHentai.Api.Tests;
 
 public class ParsingTestData<T> : XUnitJsonSerializable
 {
-    public T ExpectedResult { get; set; }
+    public required T ExpectedResult { get; set; }
 
-    public string HtmlPath { get; set; }
+    public required string HtmlPath { get; set; }
 
     [XUnitJsonFileName] 
-    public string File { get; set; }
+    public required string File { get; set; }
 
     [XUnitJsonCaseIndex] 
     public int Idx { get; set; }

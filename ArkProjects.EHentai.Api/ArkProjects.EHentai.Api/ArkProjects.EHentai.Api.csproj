@@ -43,8 +43,8 @@
 		<PackageReference Include="ArkProjects.Flurl" Version="4.0.0" />
 		<PackageReference Include="Flurl" Version="4.0.0" />
 		<PackageReference Include="Flurl.Http" Version="4.0.2" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.71" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
 	</ItemGroup>
 
 </Project>
