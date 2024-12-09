@@ -10,7 +10,6 @@ public class HathSettingsResponse
     public string? ClientName { get; set; }
     public string? ClientKey { get; set; }
 
-    public int StaticRanges { get; set; } = -1;
     public IReadOnlyDictionary<StaticRangeGroupType, int>? StaticRangeGroups { get; set; }
 
     public static HathSettingsResponse Parse(HtmlDocument doc)
@@ -46,11 +45,6 @@ public class HathSettingsResponse
                 if (row.SelectNodes(".//td[@class='infota']").FirstOrDefault()?.InnerText.Contains("Reset Static Ranges") == true)
                 {
                     var text = row.SelectNodes(".//td[@class='infotv']/p[1]").First().InnerText;
-                    {
-                        var match = Regex.Match(text,
-                            "This client currently has (?<ranges>\\d+) static range\\(s\\) assigned");
-                        response.StaticRanges = match.Success ? int.Parse(match.Groups["ranges"].Value, culture) : -1;
-                    }
                     {
                         var match = Regex.Match(text, "(?<name>\\w+) = (?<value>\\d+)");
                         var groups = new Dictionary<StaticRangeGroupType, int>(5);

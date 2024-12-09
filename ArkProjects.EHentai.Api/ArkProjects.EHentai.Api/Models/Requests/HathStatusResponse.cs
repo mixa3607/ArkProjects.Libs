@@ -30,9 +30,8 @@ public class HathStatusResponse
             var regionRaw = cells[0].InnerText;
             var netLoadRaw = cells[3].InnerText;
             var missRaw = cells[4].InnerText;
-            var coverageRaw = cells[5].InnerText;
-            var hitrateRaw = cells[6].InnerText;
-            var qualityRaw = cells[7].InnerText;
+            var hitrateRaw = cells[5].InnerText;
+            var qualityRaw = cells[6].InnerText;
 
             var region = regionRaw switch
             {
@@ -45,7 +44,6 @@ public class HathStatusResponse
             };
             var netLoad = int.Parse(Regex.Match(netLoadRaw, "\\d+").Value, culture);
             var hits = int.Parse(Regex.Match(missRaw, "\\d+").Value, culture);
-            var coverage = double.Parse(Regex.Match(coverageRaw, "\\d+\\.\\d+").Value, culture);
             var hitrate = double.Parse(Regex.Match(hitrateRaw, "\\d+\\.\\d+").Value, culture);
             if (!int.TryParse(Regex.Match(qualityRaw, "\\d+").Value, culture, out var quality))
                 quality = -1;
@@ -55,7 +53,6 @@ public class HathStatusResponse
                 Region = region,
                 NetLoad = netLoad,
                 HitsPerSecond = hits,
-                Coverage = coverage,
                 HitsPerGb = hitrate,
                 Quality = quality
             };

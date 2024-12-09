@@ -1,0 +1,19 @@
+{
+  "TestCases": [
+    {
+      "ExpectedResult": {
+        "ClientId": 45244,
+        "ClientName": "services.lan",
+        "ClientKey": "PFxb12auaaaaaaaaaaaa",
+        "StaticRangeGroups": {
+          "Priority1": 58,
+          "Priority2": 22,
+          "Priority3": 25,
+          "Priority4": 125,
+          "HighCapacity": 22
+        }
+      },
+      "HtmlPath": "./files/ParsingTests/HathSettings_2.html"
+    }
+  ]
+}
